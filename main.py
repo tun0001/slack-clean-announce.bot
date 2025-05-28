@@ -10,8 +10,10 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
 client = gspread.authorize(creds)
 
+sheet_id = "1y--2Lzvpgk8O7MlgBUZiLJq0LKIoglfNWaBG_bHfynk"
+sheet = client.open_by_key(sheet_id).sheet1  # 1番目のシートを取得
 # スプレッドシートからデータ取得
-sheet = client.open("YourSpreadsheetName").sheet1
+#sheet = client.open("YourSpreadsheetName").sheet1
 records = sheet.get_all_records()
 
 # Slack メッセージ整形
@@ -22,4 +24,4 @@ for row in records[-5:]:  # 最新の5件
 # Slack 投稿
 slack_token = os.environ["SLACK_BOT_TOKEN"]
 slack_client = WebClient(token=slack_token)
-slack_client.chat_postMessage(channel="#cream_remind", text=message)
+slack_client.chat_postMessage(channel="#clean_remind", text=message)
