@@ -10,7 +10,7 @@ scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/au
 creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
 client = gspread.authorize(creds)
 
-sheet_id = "1y--2Lzvpgk8O7MlgBUZiLJq0LKIoglfNWaBG_bHfynk"
+sheet_id = ""
 sheet = client.open_by_key(sheet_id).sheet1  # 1番目のシートを取得
 # スプレッドシートからデータ取得
 #sheet = client.open("YourSpreadsheetName").sheet1
